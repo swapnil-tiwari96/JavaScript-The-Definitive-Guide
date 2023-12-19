@@ -1,12 +1,20 @@
-/*
-- JS is the programming language of the browser. 
-- HTML gives structure to the website. CSS gives the design to it. JS provides the functionality. 
-- JavaScript is a high-level (user-friendly, farther from the hardware), dynamic (variables are not explicitly declared, and they can change during the execution of the program (runtime)) programming language. 
-- There are 2 ways to run JS:
-	- You can run on the web browser with the help of HTML and CSS. 
-	- Node
-*/
+// JS is case-sensitive
+let letsGo = "first way to write";
+let LetsGo = "second way to write";
 
-// console.log is used to get the output 
-console.log("Hello World!!!!!");
-alert("This is an alert");
+//this is one line comment
+/* this is
+multiple line
+comment */
+
+// A literal is a data value that appears directly in a program
+
+// identifiers are used to name constants, variables, properties, functions, and classes and to provide labels for certain loops in JavaScript code.
+
+// JS reserves certain identifiers for use by the language itself.These “reserved words” cannot be used as regular identifiers.
+
+// JavaScript programs are written using the Unicode character set, and you can use any Unicode characters in strings and comments.
+
+// Some computer hardware and software cannot display, input, or correctly process the full set of Unicode characters. To support programmers and systems using older technology, JavaScript defines escape sequences that allow us to write Unicode characters using only ASCII characters.
+
+// Optional Semicolon - Don't think about it - its better to use semicolon when needed. 
