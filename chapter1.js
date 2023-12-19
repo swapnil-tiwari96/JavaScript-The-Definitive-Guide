@@ -1,3 +1,5 @@
+// Chapter 1. Introduction to JavaScript
+
 /*
 - JS is the programming language of the browser. 
 - HTML gives structure to the website. CSS gives the design to it. JS provides the functionality. 

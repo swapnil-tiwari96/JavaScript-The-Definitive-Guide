@@ -1,3 +1,5 @@
+// Chapter 2. Lexical Structure
+
 // JS is case-sensitive
 let letsGo = "first way to write";
 let LetsGo = "second way to write";
