@@ -112,3 +112,199 @@
         // The backslash character (\) has a special purpose in JavaScript strings. Combined with the character that follows it, it represents a character that is not otherwise representable within the string.
         // Since the apostrophe is the same as the single-quote character, you must use the backslash character (\) to “escape” any apostrophes that appear in single-quoted strings.
         console.log('You\'re right, it can\'t be a quote');
+        // Three escape sequences are generic and can be used to represent any character by specifying its Unicode character code as a hexadecimal number.
+        console.log("\xA9");
+        // the \u escape represents an arbitrary Unicode character specified by four hexadecimal digits or one to five digits when the digits are enclosed in curly braces
+        console.log("\u03c0");
+        console.log("\u{1f600}");
+    // 3. Working with strings
+        // if you use + operator on strings, it joins them by appending the second to the first.
+        console.log("First " + "Second");
+        // Strings can be compared with the standard === equality and !== inequality operators: two strings are equal if and only if they consist of exactly the same sequence of 16-bit values.
+        // String comparison is done simply by comparing the 16-bit values.
+        // To determine the length of a string—the number of 16-bit values it contains—use the length property of the string.
+        let str = "Hello World!";
+        console.log(str.length);
+        console.log(`Result of str.includes("ello") is ${str.includes("ello")}`);
+        console.log(`Result of str.toUpperCase() is ${str.toUpperCase()}`);
+        console.log(`Result of str.replace("ello","qwerty") is ${str.replace("ello","qwerty")}`);
+        // JavaScript provides a rich API for working with strings. For more see the MDN Docs
+        // Remember that strings are immutable in JavaScript. Methods like replace() and toUpperCase() return new strings: they do not modify the string on which they are invoked.
+    // 4. Template Literal
+        // Everything between the ${ and the matching } is interpreted as a JavaScript expression.Everything outside the curly braces is normal string literal text.
+        // The expression inside the braces is evaluated and then converted to a string and inserted into the template, replacing the dollar sign, the curly braces, and everything in between them.
+        // A template literal may include any number of expressions. It can use any of the escape characters that normal strings can, and it can span any number of lines, with no special escaping required.
+        console.log(`Tempelate literal ${1 + 2}`);
+        // TAGGED TEMPLATE LITERALS - see this later
+    // 5. Pattern Matching
+        // JavaScript defines a datatype known as a regular expression (or RegExp) for describing and matching patterns in strings of text.
+        // Text between a pair of slashes constitutes a regular expression literal.
+        let text = "testing: 1, 2, 3";
+        let pattern = /\d+/g;
+        console.log(`Result of pattern.test(text) is ${pattern.test(text)}`);
+        console.log(`Result of text.search(pattern) is ${text.search(pattern)}`);
+        console.log(`Result of text.match(pattern) is ${text.match(pattern)}`);
+        console.log(`Result of text.replace(pattern, "#") is ${text.replace(pattern, "#")}`);
+        console.log(`Result of text.split(/\D+/) is ${text.split(/\D+/)}`);
+// Boolean Values
+    // A boolean value represents truth or falsehood, on or off, yes or no.
+    // There are only two possible values of this type. The reserved words true and false evaluate to these two values.        // false, and the six values (undefined, null, 0, -0, NaN, "") that convert to it, are sometimes called falsy values, and all other values are called truthy.
+    if (undefined || NaN || null || 0 || -0 || "") {
+        console.log(`Result of if (undefined || NaN || null || 0 || -0 || "") is ${true}`);
+    } else {
+        console.log(`Result of if (undefined || NaN || null || 0 || -0 || "") is ${false}`);
+    }
+    // Three important operators: ||, &&, !
+    
+// null and undefined
+    // null is a language keyword that evaluates to a special value that is usually used to indicate the absence of a value.
+    // null is a special object value that indicates "no object". "No value" for numbers and strings as well as objects.
+    console.log(`Result of typeof null is ${typeof null}`);
+    // JavaScript also has a second value that indicates absence of value - undefined. 
+    // It is the value of variables that have not been initialized and the value you get when you query the value of an object property or array element that does not exist.
+    // The undefined value is also the return value of functions that do not explicitly return a value and the value of function parameters for which no argument is passed.
+    // undefined is a predefined global constant (not a language keyword like null) that is initialized to the undefined value.
+    // If you apply the typeof operator to the undefined value, it returns “undefined”, indicating that this value is the sole member of a special type.
+    console.log(`Result of typeof undefined is ${typeof undefined}`);
+    // null and undefined both indicate an absence of value and can often be used interchangeably.
+    console.log(`Result of null == undefined is ${null == undefined}`);
+    console.log(`Result of null === undefined is ${null === undefined}`);
+    // I consider undefined to represent a system-level, unexpected, or error-like absence of value and null to represent a program-level, normal, or expected absence of value.
+
+// Symbols
+    // Symbols were introduced in ES6 to serve as non-string property names.
+    // To understand Symbols, you need to know that JavaScript’s fundamental Object type is an unordered collection of properties,where each property has a name and a value. 
+    // Property names are typically (and until ES6, were exclusively) strings. But in ES6 and later, Symbols can also serve this purpose.
+    let strName = "String Name";
+    let symName = Symbol(strName);
+    console.log(symName);
+    console.log(`Result of typeof symName is ${typeof symName}`);
+    let obj = {};
+    obj[strName] = 1;
+    obj[symName] = 2;
+    console.log(obj);
+    // To obtain a Symbol value, you call the Symbol() function.
+    // This function never returns the same value twice, even when called with the same argument. 
+    // This means that if you call Symbol() to obtain a Symbol value, you can safely use that value as a property name to add a new property to an object and do not need to worry that you might be overwriting an existing property with the same name.
+
+// Global Object
+    // The global object is a regular JavaScript object: the properties of this object are the globally defined identifiers that are available to a JavaScript program.
+    console.log(global);
+    console.log(globalThis); //always use this
+    console.log(global === globalThis);
+// Immutable Primitive Values and Mutable Object References
+    // Primitives (undefined, null, booleans, numbers, and strings) are immutable: there is no way to change (or “mutate”) a primitive value.
+    // All string methods that appear to return a modified string are, in fact, returning a new string value.
+    // If two distinct string values are compared, JavaScript treats them as equal if, and only if, they have the same length and if the character at each index is the same.
+    console.log(str.toUpperCase()); //here the original string is not changed. This is a new string now attached to the string. 
+    // Objects are different than primitives. First, they are mutable—their values can change.
+    // Objects are not compared by value: two distinct objects are not equal even if they have the same properties and values. 
+    // Two distinct arrays are not equal even if they have the same elements in the same order.
+    // Objects are sometimes called reference types to distinguish them from JavaScript’s primitive types. Using this terminology, object values are references, and we say that objects are compared by reference: two object values are the same if and only if they refer to the same underlying object. 
+    let a = [2,3,4,5];
+    let b = a;
+    b[0] = 1;
+    console.log(a);
+    console.log(`Result of a === b is ${a === b}`);
+    // Assigning an object (or array) to a variable simply assigns the reference: it does not create a new copy of the object.
+    // If you want to make a new copy of an object or array, you must explicitly copy the properties of the object or the elements of the array.
+    console.log(Array.from(a));
+    // Similarly, if we want to compare two distinct objects or arrays, we must compare their properties or elements.
+
+// Type Conversions
+    // Some values (“truthy” values) convert to true and others (“falsy” values) convert to false in case of booleans as seen above.
+    // The same is true for other types: if JavaScript wants a string, it will convert whatever value you give it to a string.
+    // If JavaScript wants a number, it will try to convert the value you give it to a number (or to NaN if it cannot perform a meaningful conversion).
+    console.log(10 + " lets go");
+    console.log("10" * "7");
+    // refer the table for type conversions (Table 3.2)
+    // 1. Conversions and Equality
+        // The “strict equality operator,” ===, does not consider its operands to be equal if they are not of the same type.
+        // the == operator is flexible with the type.
+        console.log(`Result of null == undefined is ${null == undefined}`);
+        console.log(`Result of null === undefined is ${null === undefined}`);
+        console.log(`Result of 0 == "0" is ${0 == "0"}`);
+        console.log(`Result of 0 === "0" is ${0 === "0"}`);
+    // 2. Explicit Conversions
+        // The simplest way to perform an explicit type conversion is to use the Boolean(), Number(), and String() functions. 
+        console.log(Boolean(undefined));
+        console.log(Boolean("undefined"));
+        console.log(Number("5"));
+        console.log(String(5));
+        // Any value other than null or undefined has a toString() method, and the result of this method is usually the same as that returned by the String() function.
+        // As an aside, note that the Boolean(), Number(), and String() functions can also be invoked—with new—as constructor.
+        let abc = new Number("56");
+        console.log(abc);
+        // If one operand of the + operator is a string, it converts the other one to a string.
+        // The unary + operator converts its operand to a number.
+        // And the unary ! operator converts its operand to a boolean and negates it.
+        // The toString() method defined by the Number class accepts an optional argument that specifies a radix, or base, for the conversion.
+        // If you do not specify the argument, the conversion is done in base 10.
+        let n = 123456.789;
+        console.log("0b" + n.toString(2));
+        console.log("0o" + n.toString(8));
+        console.log("0x" + n.toString(16));
+        // toFixed() converts a number to a string with a specified number of digits after the decimal point.
+        // toExponential() converts a number to a string using exponential notation, with one digit before the decimal point and a specified number of digits after the decimal point (which means that the number of significant digits is one larger than the value you specify).
+        // toPrecision() converts a number to a string with the number of significant digits you specify.
+        console.log(n.toFixed(0));
+        console.log(n.toFixed(2));
+        console.log(n.toFixed(5));
+        console.log(n.toExponential(1));
+        console.log(n.toExponential(3));
+        console.log(n.toPrecision(4));
+        console.log(n.toPrecision(7));
+        console.log(n.toPrecision(10));
+        // Number() only works for base-10 integers and does not allow trailing characters that are not part of the literal.
+        // parseInt() parses only integers, while parseFloat() parses both integers and floating-point numbers. If a string begins with “0x” or “0X”, parseInt() interprets it as a hexadecimal number.
+        // Both parseInt() and parseFloat() skip leading whitespace, parse as many numeric characters as they can, and ignore anything that follows.
+        console.log(parseInt(" 3.14 meters"));
+        console.log(parseFloat(" 3.14 meters"));
+        console.log(parseInt(".1"));
+        console.log(parseFloat("&14"));
+        // parseInt() accepts an optional second argument specifying the radix (base) of the number to be parsed. Legal values are between 2 and 36.
+        console.log(parseInt("11", 2));
+    // 3. Object to Primitive Conversions
+        // Read this later
+
+// Variable Declaration and Assignment
+    // Binding a name to a value gives us a way to refer to that value and use it in the programs we write. When we do this, we typically say that we are assigning a value to a variable.
+    // If we permanently assign a value to a name, then we call that name a constant instead of a variable.
+    // In modern JavaScript (ES6 and later), variables are declared with the let keyword. 
+    let i, sum; //declaring multiple variables in a single line.
+    // If you don’t specify an initial value for a variable with the let statement, the variable is declared, but its value is undefined until your code assigns a value to it.
+    // To declare a constant instead of a variable, use const instead of let. const works just like let except that you must initialize the constant when you declare it.
+    const AU = 1.496E8;
+    // As the name implies, constants cannot have their values changed, and any attempt to do so causes a TypeError to be thrown.
+    // It is a common (but not universal) convention to declare constants using names with all capital letters such as H0 or HTTP_NOT_FOUND as a way to distinguish them from variables.
+    // Variable and Constant Scope
+        // The scope of a variable is the region of your program source code in which it is defined. Variables and constants declared with let and const are block scoped.
+        // Block scoped - if a variable or constant is declared within a set of curly braces, then those curly braces delimit the region of code in which the variable or constant is defined.
+        // When a declaration appears at the top level, outside of any code blocks, we say it is a global variable or constant and has global scope.
+    // Repeated Declarations
+        // It is a syntax error to use the same name with more than one let or const declaration in the same scope.
+        // It is legal (though a practice best avoided) to declare a new variable with the same name in a nested scope.
+    // Declarations and Types
+        // there is no type associated with JavaScript’s variable declarations. A JavaScript variable can hold a value of any type.
+    // Variable Declaration with var
+        // In versions of JavaScript before ES6, the only way to declare a variable is with the var keyword, and there is no way to declare constants.
+        // Variables declared with var do not have block scope. Instead, they are scoped to the body of the containing function no matter how deeply nested they are inside that function.
+        // Globals declared with var are implemented as properties of the global object. The global object can be referenced as globalThis.
+        // the properties created with global var declarations cannot be deleted with the delete operator.
+        // Global variables and constants declared with let and const are not properties of the global object.
+        // Unlike variables declared with let, it is legal to declare the same variable multiple times with var.
+        // One of the most unusual features of var declarations is known as hoisting.
+        // The initialization of the variable remains where you wrote it, but the definition of the variable moves to the top of the function. So variables declared with var can be used, without error, anywhere in the enclosing function.
+    // Destructuring Assignment
+        // ES6 implements a kind of compound declaration and assignment syntax known as destructuring assignment.
+        // In a destructuring assignment, the value on the righthand side of the equals sign is an array or object (a “structured” value), and the lefthand side specifies one or more variable names using a syntax that mimics array and object literal syntax.
+        let [xy, yz] = [1,2];
+        console.log(xy, yz);
+        // Very useful with functions that return multiple data
+        // Extra variables on the left are set to undefined, and extra values on the right are ignored.
+        // If you want to collect all unused or remaining values into a single variable when destructuring an array, use three dots (...) before the last variable name on the left-hand side.
+        // You can use any iterable object on the righthand side of the assignment; any object that can be used with a for/of loop can also be destructured.
+        let [first, ...rest] = "Hello";
+        console.log(first, rest);
+        // Destructuring assignment can also be performed when the righthand side is an object value.
+        // Each of the identifiers on the lefthand side of an object destructuring assignment can also be a colon-separated pair of identifiers, where the first is the name of the property whose value is to be assigned and the second is the name of the variable to assign it to
