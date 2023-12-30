@@ -54,8 +54,8 @@
         console.log(`Result of Number.isNaN(NaN) is ${Number.isNaN(NaN)}`);
         console.log(`Result of isNaN(NaN) is ${isNaN(NaN)}`);
         console.log(`Result of isNaN(100) is ${isNaN(100)}`);
-        console.log(`Result of isFinite(20) is ${isFinite(20)}`);
         // isFinite() will give true if the number is not Infinity, -Infinity or NaN
+        console.log(`Result of isFinite(20) is ${isFinite(20)}`);
         console.log(`Result of isFinite(Infinity) is ${isFinite(Infinity)}`);
         // checking if 0 and -0 are same
         console.log(`Result of 0 === -0 is ${(0 === -0)}`);
