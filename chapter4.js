@@ -70,3 +70,19 @@
         // With the new ?.() invocation syntax, if the expression to the left of the ?. evaluates to null or undefined, then the entire invocation expression evaluates to undefined and no exception is thrown.
 
 // 6. Object Creation Expressions
+    // An object creation expression creates a new object and invokes a function (called a constructor) to initialize the properties of that object.
+    // Object creation expressions are like invocation expressions except thatthey are prefixed with the keyword new.
+    new Object();
+
+// 7. Operator Overview
+    // Operators are used for JavaScript’s arithmetic expressions, comparison expressions, logical expressions, assignment expressions, and more.
+    // See Table 4.1 for all the operators.
+    // Number of Operands
+        // Operators can be categorized based on the number of operands they expect.
+        // Most JavaScript operators, like the * multiplication operator, are binary operators that combine two expressions into a single, more complex expression. That is, they expect two operands.
+        // JavaScript also supports a number of unary operators, which convert a single expression into a single, more complex expression. The - operator in the expression -x is a unary operator that performs the operation of negation on the operand x.
+    // Operand and Result Type
+        // Some operators work on values of any type, but most expect their operands to be of a specific type, and most operators return (or evaluate to) a value of a specific type.
+        // JavaScript operators usually convert the type of their operands as needed.
+        // In JavaScript, variables, properties of objects, and elements of arrays are lvalues.
+    
