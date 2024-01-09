@@ -195,6 +195,7 @@
         // The break statement, used alone, causes the innermost enclosing loop or switch statement to exit immediately.
         // In loops, it is typically used to exit prematurely when, for whatever reason, there is no longer any need to complete the loop.
         // JavaScript also allows the break keyword to be followed by a statement label.
+        const getData = () => console.log("Testing"); //although this function should be getting a matrix. Just for testing purposes, logging. 
         let matrix = getData();
         let sum1 = 0, success = false;
         // Start with a labeled statement that we can break out of if errors occur
@@ -218,4 +219,88 @@
         // Otherwise, sum contains the sum of all cells of the matrix.
     // continue
         // The continue statement is similar to the break statement. Instead of exiting a loop, however, continue restarts a loop at the next iteration.
-        // The continue statement can also be used with a label. 
+        // The continue statement can also be used with a label.
+        // When the continue statement is executed, the current iteration of the enclosing loop is terminated, and the next iteration begins. This means different things for different types of loops.
+        // Note the difference in behavior of the continue statement in the while and for loops: a while loop returns directly to its condition, but a for loop first evaluates its increment expression and then returns to its condition.
+    // return
+        // A return statement within a function specifies the value of invocations of that function.
+        // A return statement may appear only within the body of a function. It is a syntax error for it to appear anywhere else.
+        // When the return statement is executed, the function that contains it returns the value of expression to its caller.
+        function square(x) { return x*x; }
+        console.log(square(4));
+    // yield
+        // The yield statement is much like the return statement but is used only in ES6 generator functions to produce the next value in the generated sequence of values without actually returning.
+    // throw
+        // An exception is a signal that indicates that some sort of exceptional condition or error has occurred. To throw an exception is to signal such an error or exceptional condition.
+        // To catch an exception is to handle it—to take whatever actions are necessary or appropriate to recover from the exception.
+        function factorial(x) {
+            // If the input argument is invalid, throw an exception!
+            if (x < 0) throw new Error("x must not be negative");
+            // Otherwise, compute a value and return normally
+            let f;
+            for(f = 1; x > 1; f *= x, x--) /* empty */ ;
+            return f;
+            }
+            factorial(4); //just testing this is not factorial code though.
+        // When an exception is thrown, the JavaScript interpreter immediately stops normal program execution and jumps to the nearest exception handler.
+        // Exception handlers are written using the catch clause of the try/catch/finally statement.
+    // try/catch/finally
+        // The try/catch/finally statement is JavaScript’s exception handling mechanism.
+        // The try clause of this statement simply defines the block of code whose exceptions are to be handled.
+        // The try block is followed by a catch clause, which is a block of statements that are invoked when an exception occurs anywhere within the try block.
+        // The catch clause is followed by a finally block containing cleanup code that is guaranteed to be executed, regardless of what happens in the try block.
+        // Both the catch and finally blocks are optional, but a try block must be accompanied by at least one of these blocks.
+        try {
+            
+        } catch (error) {
+            
+        } finally {
+
+        }
+
+// 6. Miscellaneous statements
+    // with
+        // not so important statement since it takes more time to execute while it can be done easily with other techniques. 
+        // The common use of the with statement is to make it easier to work with deeply nested object hierarchies.
+        // document.forms[0].address.value
+        /* with(document.forms[0]) {
+            name.value = "";
+            address.value = "";
+            email.value = "";
+        } */
+        // But this could easily be done by
+        // let f = document.forms[0]; //and then you can access this variable. 
+    // debugger
+        // In practice, this statement acts like a breakpoint: execution of JavaScript code stops, and you can use the debugger to print variables’ values, examine the call stack, and so on.
+        function f(o) {
+            if (o === undefined) debugger; // Temporary line for debugging purposes
+            // The rest of the function goes here.
+            }
+    // "use strict"
+            // "use strict" is a directive introduced in ES5. Directives are not statements.
+            // The purpose of a "use strict" directive is to indicate that the code that follows (in the script or function) is strict code.
+            // In addition to code explicitly declared to be strict, any code in a class body or in an ES6 module is automatically strictcode.
+            // This means that if all of your JavaScript code is written as modules, then it is all automatically strict, and you will never need to use an explicit "use strict" directive.
+            // Strict code is executed in strict mode. Strict mode is a restricted subset of the language that fixes important language deficiencies and provides stronger error checking and increased security.
+            // Do read all the differences between stict mode and non strict mode from the book. 
+
+// 7. Declarations
+    // These keywords are more accurately described as declarations rather than statements. Declarations serve to define new values and give them names that we can use to refer to those values.
+    // const, let and var - detailed notes in chapter 4
+        // const declares constants, and let declares variables. Prior to ES6, the var keyword was the only way to declare variables and there was no way to declare constants.
+    // functions
+        // A function declaration creates a function object and assigns it to the specified name.
+        // Elsewhere in our program, we can refer to the function—and run the code inside it—by using this name.
+        // function declarations are “hoisted” because it is as if they had all been moved up to the top of whatever scope they are defined within.
+    // class
+        // In ES6 and later, the class declaration creates a new class and gives it a name that we can use to refer to it.
+        // Unlike functions, class declarations are not hoisted, and you cannot use a class declared this way in code that appears before the declaration.
+    // import and export
+        // The import and export declarations are used together to makevalues defined in one module of JavaScript code available in another module. 
+        // A module is a file of JavaScript code with its own global namespace, completely independent of all other modules.
+        // The only way that a value (such as function or class) defined in one module can be used in another module is if the defining module exports it with export and the using module imports it with import.
+        // import directives are used to import one or more values from another file of JavaScript code and give them names within the current module.
+        // import Circle from './geometry/circle.js'; //not writing as code since it will throw an error due to circle.js not existing right now. Just an example. 
+        const PI = Math.PI;
+        const TAU = 2 * PI;
+        export { PI, TAU };
